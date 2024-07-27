@@ -3,11 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://kit.fontawesome.com/cfa6615fb1.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="CSS/style.css">
   <script src="JS/script.js" defer></script>
   <title>PC-Componentes</title>
 </head>
 <body>
-  
+  <center>
+    <header class="titulo">
+      Componentes para la PC de tus sueños
+    </header>
+    <main>
+      <div class="contenedor">
+        <div>
+          <input type="text" value="Contenedor Vacio" readonly>
+          <img src="Media/imagen-en-blanco.avif">
+        </div>
+        <div>
+          <input type="text" value="Contenedor Vacio" readonly>
+          <img src="Media/imagen-en-blanco.avif">
+        </div>
+        <div>
+          <input type="text" value="Contenedor Vacio" readonly>
+          <img src="Media/imagen-en-blanco.avif">
+        </div>
+        <div>
+          <input type="text" value="Contenedor Vacio" readonly>
+          <img src="Media/imagen-en-blanco.avif">
+        </div>
+      </div>
+      <div class="contenedor-de-pago">
+        <h2><i class="fa-solid fa-cash-register"></i> Total a Pagar <i class="fa-solid fa-money-bills"></i></h2>
+        <form id="formulario">
+          <input type="submit" id="calcular-precio" class="calcular-precio" value="> Calcular Precio de los Productos"><br>
+          <input id="total" type="number" value="0" readonly><br>
+          <i class="fa-solid fa-circle-arrow-right"></i>
+          <input type="submit" class="pagar-productos" value="> Pagar Productos <">
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </form>
+      </div>
+      <div class="contenedor-de-productos">
+        <div>
+          <div class="Productos">
+            <img src="Media/chasis.jpg">
+            <p>Chasis > $1500 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/disco-duro.jpg">
+            <p>Disco Duro > $1000 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/disipadores.jpg">
+            <p>Disipadores > $1800 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/fuente-de-alimentacion.webp">
+            <p>Fuente de Almentacion > $800 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/memoria-ram.jpg">
+            <p>Memoria Ram > $1250 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/placa-base.jpg">
+            <p>Placa Base > $2000 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/procesador.jpg">
+            <p>Procesador > $1780 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/tarjeta-de-red.jpg">
+            <p>Tarjeta de Red > $1300 USD</p>
+          </div>
+        </div>
+        <div>
+          <div class="Productos">
+            <img src="Media/tarjeta-grafica.jpg">
+            <p>Tarjeta Grafica > $1100 USD</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pie-de-pagina">
+      @2024. Armando Pasten Martinez. Todos los Derechos Reservados
+    </footer>
+  </center>
 </body>
 </html>
