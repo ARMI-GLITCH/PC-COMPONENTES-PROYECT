@@ -28,28 +28,36 @@ function cambiarImg (event) {
   const contenedorSrc = event.target;
   let totalsum = 0;
   const images = document.querySelectorAll('img[data-price]')
-  contenedorSrc.src = itemImg.src
+  const todoslosproductos = document.querySelectorAll("img[id]")
+  contenedorSrc.src = itemImg.src  
   for(let f = 1; f <= 4; f++) {
     const contenedorenblanco = document.getElementById(`contenedor-imagen-${f}`)
-    const chasis = contenedorenblanco.setAttribute('name', "Chasis")
-    const discoduro = contenedorenblanco.setAttribute('name', "Disco-duro")
-    images.forEach(img => {
-      if(contenedorenblanco===contenedorSrc&&contenedorenblanco.getAttribute('name')==="Chasis"){
-        console.log("Se detecto un producto");
-        const price = parseFloat(img.getAttribute('data-price'))
-        console.log(price);
-        if(price===1500){
-         suma = totalsum += price;
-         total.value = 1500
-        }else if(contenedorenblanco===contenedorSrc&&contenedorenblanco.getAttribute('name')==="Disco-duro"){
-          console.log("Se detecto un producto");
-      }else if(price===1000){
-        
+    if(contenedorenblanco===contenedorSrc){
+      console.log("Se detecto un producto");
+    }
+    for(const img of images){
+      const price = parseFloat(img.getAttribute('data-price'))
+      const chasis = document.getElementById("chasis")
+      const discoduro = document.getElementById('disco-duro')
+      if(price===1500&&itemImg===chasis){
+        console.log("Se detecto el Chasis");
+        const atributo = contenedorenblanco.setAttribute('name', "Chasis") 
+      }else if(contenedorenblanco.getAttribute('name')==="Chasis"){
+        totalsum += price
+        total.value = 1500
       }
-      } 
-    });
+      if(price===1000&&itemImg===discoduro){
+        console.log("Se detecto el Disco-Duro");
+        const atributo = contenedorenblanco.setAttribute('name', "Disco-Duro") 
+      }else if(contenedorenblanco.getAttribute('name')==="Disco-Duro"){
+        totalsum += price
+        total.value = 1000
+      }
+    }
   }
 }
+
+// Utiliza lo ID para verificar los productos
 
 
 function consultarProductos () {
