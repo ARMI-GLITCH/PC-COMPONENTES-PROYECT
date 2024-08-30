@@ -1,6 +1,7 @@
 let contenedorImg;
 let itemImg
 let input;
+let contenedor;
 
 const form = document.getElementById('formulario')
 const total = document.getElementById('total')
@@ -26,39 +27,33 @@ function productosElegidos (event) {
 
 function cambiarImg (event) {
   const contenedorSrc = event.target;
-  let totalsum = 0;
+  let total = 0;
+  contenedorSrc.src = itemImg.src;
+  console.log(contenedorSrc);
+  
   const images = document.querySelectorAll('img[data-price]')
-  const todoslosproductos = document.querySelectorAll("img[id]")
-  contenedorSrc.src = itemImg.src  
-  for(let f = 1; f <= 4; f++) {
-    const contenedorenblanco = document.getElementById(`contenedor-imagen-${f}`)
-    if(contenedorenblanco===contenedorSrc){
-      console.log("Se detecto un producto");
-    }
-    for(const img of images){
-      const price = parseFloat(img.getAttribute('data-price'))
-      const chasis = document.getElementById("chasis")
-      const discoduro = document.getElementById('disco-duro')
-      if(price===1500&&itemImg===chasis){
+  for (let j = 1; j <= 4; j++) {
+    const contenedorenblanco = document.getElementById(`contenedor-imagen-${j}`)
+    const price = parseFloat(contenedorenblanco.getAttribute("data-price"))
+    for (let img of images) {
+      const chasis =  document.getElementById('chasis')
+      const discoduro = document.getElementById('discoduro')
+      const value_of_dataprice = parseFloat(img.getAttribute('data-price'))
+      if(itemImg===chasis&&value_of_dataprice===1500){
         console.log("Se detecto el Chasis");
-        const atributo = contenedorenblanco.setAttribute('name', "Chasis") 
-      }else if(contenedorenblanco.getAttribute('name')==="Chasis"){
-        totalsum += price
-        total.value = 1500
+        let atributo = contenedorSrc.setAttribute('data-price', "1500");
+        return;
       }
-      if(price===1000&&itemImg===discoduro){
-        console.log("Se detecto el Disco-Duro");
-        const atributo = contenedorenblanco.setAttribute('name', "Disco-Duro") 
-      }else if(contenedorenblanco.getAttribute('name')==="Disco-Duro"){
-        totalsum += price
-        total.value = 1000
+      if(itemImg===discoduro&&value_of_dataprice===1000){
+        console.log("Se detecto el Disco Duro");
+        let atributo = contenedorSrc.setAttribute('data-price', "1000")
+        return;
       }
     }
   }
 }
 
-// Utiliza lo ID para verificar los productos
-
+// Le pones un atributo a el contenedor en blanco para darle un pinche valor
 
 function consultarProductos () {
   for (let i = 1; i <= 4; i++) {
