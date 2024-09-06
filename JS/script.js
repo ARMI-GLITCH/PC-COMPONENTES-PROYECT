@@ -14,11 +14,11 @@ for (let item of producto) {
 }
 
 function comprobarProductos (event) {
-  event.preventDefault();
   if (total.value == 0) {
+    event.preventDefault();
     error.innerText = "Error: No hay productos en tu carro de compras"
   }else if(verificar_letras.test(total.value)){
-    error.innerText = "Se ha calculado el precio de los productos"
+    console.log( "Se ha calculado el precio de los productos");
   }
 }
 function productosElegidos (event) {
@@ -30,8 +30,6 @@ function cambiarImg (event) {
   const contenedorSrc = event.target;
   contenedorSrc.src = itemImg.src;
   const images = document.querySelectorAll('img[data-price]')
-  for (let j = 1; j <= 4; j++) {
-    const contenedorenblanco = document.getElementById(`contenedor-imagen-${j}`)
     for (let img of images) {
       const chasis =  document.getElementById('chasis')
       const discoduro = document.getElementById('discoduro')
@@ -86,13 +84,13 @@ function cambiarImg (event) {
       }
       if(itemImg===tarjetadered&&value_of_dataprice===1300){
         console.log("Se detecto la Tarjeta de Red");
-        let atributo = contenedorSrc.setAttribute('data-price', "1");
+        let atributo = contenedorSrc.setAttribute('data-price', "1300");
         sumarproductos()
         return;
       }
     }
   }
-}
+
 
 function sumarproductos(){
   contenedores = [
@@ -107,8 +105,11 @@ function sumarproductos(){
   for (const id of contenedores) {
     const contenedor = document.getElementById(id)
     const precio = parseFloat(contenedor.getAttribute("data-price"))
+    console.log(precio);
+    
     totalsum += precio
   }
+  total.value = totalsum
   console.log(totalsum);
 }
 
