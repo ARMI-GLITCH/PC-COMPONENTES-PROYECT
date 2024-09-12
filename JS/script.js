@@ -21,10 +21,10 @@ function comprobarProductos (event) {
     console.log( "Se ha calculado el precio de los productos");
   }
 }
+
 function productosElegidos (event) {
   itemImg = event.target;
 }
-
 
 function cambiarImg (event) {
   const contenedorSrc = event.target;
@@ -103,11 +103,26 @@ function sumarproductos(){
   let totalsum = 0;
 
   for (const id of contenedores) {
+    const media = /Media\/.*\.jpg$/
     const contenedor = document.getElementById(id)
+    const srcatributo = contenedor.getAttribute('src')
     const precio = parseFloat(contenedor.getAttribute("data-price"))
-    console.log(precio);
-    
     totalsum += precio
+    if(srcatributo&&media.test(srcatributo)){
+      let guardar = localStorage.getItem('Productos')
+      let productos;
+      if(guardar===null){
+        productos = [];
+      }else{
+        productos = JSON.parse(guardar);
+      }
+      let tusproductos = {
+        producto: srcatributo,
+        producto_precio: precio
+      }
+      productos.push(tusproductos);
+      localStorage.setItem('Productos', JSON.stringify(productos))
+    }
   }
   total.value = totalsum
   console.log(totalsum);
