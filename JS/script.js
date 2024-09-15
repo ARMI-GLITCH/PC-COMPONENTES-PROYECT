@@ -3,10 +3,34 @@ let itemImg
 let input;
 let contenedor;
 
+document.getElementById('recuperar').addEventListener('click',recuperar)
+document.getElementById('borrar').addEventListener('click',borrar)
+
+function recuperar(){
+  const obtener = localStorage.getItem('tusproductos');
+  if(obtener){
+    alert(`Tu recuperaste:${obtener}`)
+  }else{
+    alert(`No se puede recuperar:${obtener}`)
+  }
+}
+
+function borrar(){
+  const obtener = localStorage.getItem('tusproductos');
+  if(obtener){
+    localStorage.removeItem('tusproductos')
+    alert(`Tu borraste:${obtener}`)
+  }else{
+    alert(`No se puede borrar:${obtener}`)
+  }
+}
+
+
 const form = document.getElementById('formulario')
 const total = document.getElementById('total')
 const error = document.getElementById('error')
 const verificar_letras = /[a-zA-Z]/;
+
 
 const producto = document.getElementsByClassName('imagen')
 for (let item of producto) {
@@ -91,7 +115,6 @@ function cambiarImg (event) {
     }
   }
 
-
 function sumarproductos(){
   contenedores = [
     "contenedor-imagen-1",
@@ -109,7 +132,7 @@ function sumarproductos(){
     const precio = parseFloat(contenedor.getAttribute("data-price"))
     totalsum += precio
     if(srcatributo&&media.test(srcatributo)){
-      let guardar = localStorage.getItem('Productos')
+      let guardar = localStorage.getItem('tusproductos')
       let productos;
       if(guardar===null){
         productos = [];
@@ -121,7 +144,7 @@ function sumarproductos(){
         producto_precio: precio
       }
       productos.push(tusproductos);
-      localStorage.setItem('Productos', JSON.stringify(productos))
+      localStorage.setItem('tusproductos', JSON.stringify(productos))
     }
   }
   total.value = totalsum
@@ -135,7 +158,7 @@ function consultarProductos () {
     contenedorImg.addEventListener('drop', cambiarImg)
   }
 }
-document.addEventListener("dragstart", consultarProductos)
 
+document.addEventListener("dragstart", consultarProductos)
 form.addEventListener('submit', comprobarProductos)
 
